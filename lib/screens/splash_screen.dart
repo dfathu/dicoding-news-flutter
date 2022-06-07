@@ -114,7 +114,7 @@ class SplashScreeen extends StatelessWidget {
                     onPressed: () {
                       Navigator.pushNamed(context, '/home');
                     },
-                    margin: const EdgeInsets.only(right: 30),
+                    margin: const EdgeInsets.only(right: 30, bottom: 30),
                   ),
                 ],
               )
