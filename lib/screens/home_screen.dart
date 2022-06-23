@@ -1,3 +1,4 @@
+import 'package:dicoding_pertama_membuat_aplikasi_flutter/services/internet.dart';
 import 'package:dicoding_pertama_membuat_aplikasi_flutter/shared/responsive.dart';
 import 'package:dicoding_pertama_membuat_aplikasi_flutter/shared/theme.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,8 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.only(
                   top: defaultMargin,
                   right: defaultMargin,
-                  left: defaultMargin),
+                  left: defaultMargin,
+                  bottom: defaultMargin),
               child: Column(
                 children: [
                   _headerHomeM(),
@@ -89,6 +91,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                             "Make something new in month june",
                                             style: blackTextStyle.copyWith(
                                                 fontSize: 20),
+                                          ),
+                                          SizedBox(
+                                            height: 10,
                                           ),
                                           Row(
                                             mainAxisAlignment:
@@ -164,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
       })),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Add your onPressed code here!
+          Apiservice().getPosts();
         },
         child: const Icon(
           Icons.add,
