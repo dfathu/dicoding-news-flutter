@@ -51,10 +51,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   _headerHomeM(),
                   const SizedBox(
-                    height: 10,
+                    height: 30,
                   ),
-                  ListView.builder(
+                  ListView.separated(
                     physics: const NeverScrollableScrollPhysics(),
+                    separatorBuilder: (context, index) => const SizedBox(
+                      height: 10,
+                    ),
                     shrinkWrap: true,
                     itemCount: 5,
                     itemBuilder: (BuildContext context, int index) {
@@ -109,9 +112,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ),
                                               Text(
                                                 "Travel",
-                                                style: blackTextStyle.copyWith(
+                                                style: greyTextStyle.copyWith(
                                                     fontSize: 16,
-                                                    fontStyle: FontStyle.italic,
                                                     fontWeight: medium),
                                               ),
                                             ],
