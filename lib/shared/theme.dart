@@ -45,3 +45,26 @@ FontWeight semiBold = FontWeight.w600;
 FontWeight bold = FontWeight.w700;
 FontWeight extraBold = FontWeight.w800;
 FontWeight black = FontWeight.w900;
+
+List<String> categoryCard = [
+  'Travel',
+  'Sports',
+  'Economy',
+  'Politic',
+  'Technology'
+];
+
+List<String> categoryTime = [
+  '12/22',
+  '01/22',
+  '02/22',
+  '03/22',
+  '04/22',
+  '05/22',
+  '06/22',
+  '07/22',
+  '08/22',
+  '09/22',
+  '10/22',
+  '11/22',
+];

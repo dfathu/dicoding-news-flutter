@@ -1,3 +1,4 @@
+import 'package:dicoding_pertama_membuat_aplikasi_flutter/screens/detail_card_screen.dart';
 import 'package:dicoding_pertama_membuat_aplikasi_flutter/screens/home_screen.dart';
 import 'package:dicoding_pertama_membuat_aplikasi_flutter/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const SplashScreeen(),
         '/home': (context) => const HomeScreen(),
+        '/card/detail': (context) => const DetailCardScreen(),
       },
       // home: const SplashScreeen(),
     );

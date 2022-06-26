@@ -1,27 +1,46 @@
 import 'dart:convert';
 
+import 'package:dicoding_pertama_membuat_aplikasi_flutter/models/model_albums.dart';
 import 'package:dicoding_pertama_membuat_aplikasi_flutter/models/model_posts.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter/material.dart';
 
 class Apiservice {
+  // ignore: non_constant_identifier_names
   final HOST = "jsonplaceholder.typicode.com";
 
   Uri _getURI(String path, {Map<String, String>? params}) {
-    print("REQ $HOST$path $params");
-    print("debugPrint Url : ${Uri.https(HOST, path, params)}");
+    debugPrint("REQ $HOST$path $params");
+    debugPrint("debugPrint Url : ${Uri.https(HOST, path, params)}");
     return Uri.https(HOST, path, params);
   }
 
-  Future<List<dynamic>> getPosts() async {
-    final url = "/posts";
+  Future<List<ModelPost>> getPosts() async {
+    const url = "/posts";
     var uri = _getURI(url);
-    print("debugPrint _getURI : ${uri}");
+    debugPrint("debugPrint _getURI : $uri");
     var response = await http.get(uri);
-    print("debugPrint response : ${response.body}");
     List<dynamic> data = (json.decode(response.body));
+    List<ModelPost> list = data.map((val) => ModelPost.fromJson(val)).toList();
+    for (var element in list) {
+      debugPrint(
+          "debugPrint response convert list element: ${element.toJson()}");
+    }
+    return list;
+  }
 
-    print(data);
-    return data;
+  Future<List<ModelPhotos>> getPhotos() async {
+    const url = "/albums/1/photos";
+    var uri = _getURI(url);
+    debugPrint("debugPrint _getURI : $uri");
+    var response = await http.get(uri);
+    List<dynamic> data = (json.decode(response.body));
+    List<ModelPhotos> list =
+        data.map((val) => ModelPhotos.fromJson(val)).toList();
+    for (var element in list) {
+      debugPrint(
+          "debugPrint response convert list element: ${element.toJson()}");
+    }
+    return list;
   }
 }

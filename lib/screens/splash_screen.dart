@@ -68,7 +68,8 @@ class SplashScreeen extends StatelessWidget {
                   title: 'Mulai  \u{2192}',
                   width: 150,
                   onPressed: () {
-                    Navigator.pushNamed(context, '/home');
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/home', (Route<dynamic> route) => false);
                   },
                 ),
               ],
