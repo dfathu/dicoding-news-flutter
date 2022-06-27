@@ -29,6 +29,15 @@ class Apiservice {
     return list;
   }
 
+  Future<ModelPost> getPostsById(String? id) async {
+    final url = "/posts/${id}";
+    var uri = _getURI(url);
+    debugPrint("debugPrint _getURI : $uri");
+    var response = await http.get(uri);
+    ModelPost data = ModelPost.fromJson(json.decode(response.body));
+    return data;
+  }
+
   Future<List<ModelPhotos>> getPhotos() async {
     const url = "/albums/1/photos";
     var uri = _getURI(url);

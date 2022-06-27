@@ -13,11 +13,24 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late Future<List<ModelPhotos>> _futurePhotos;
+  late List<String> _timeListRandom = [];
 
   @override
   void initState() {
     super.initState();
     _futurePhotos = Apiservice().getPhotos();
+    _timeListRandom = _getRandomTime();
+    print("debugPrint time list: ${_timeListRandom[0]}");
+    _timeListRandom.forEach(
+        (element) => {print("debugPrint time list element: $element")});
+  }
+
+  List<String> _getRandomTime() {
+    List<String> _randomTime = [];
+    for (int i = 0; i < 10; i++) {
+      _randomTime.add((categoryTime..shuffle()).first);
+    }
+    return _randomTime;
   }
 
   Widget _headerHomeM() {
@@ -55,6 +68,8 @@ class _HomeScreenState extends State<HomeScreen> {
             onTap: () {
               Navigator.pushNamed(context, '/card/detail', arguments: {
                 "id": snapshot.data![index].id.toString(),
+                "time": _timeListRandom[index],
+                "image": snapshot.data![index].url.toString()
               });
             },
             child: Card(
@@ -78,6 +93,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               Text(
                                 snapshot.data![index].title.toString(),
                                 style: blackTextStyle.copyWith(fontSize: 20),
+                                softWrap: true,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
                               ),
                               const SizedBox(
                                 height: 10,
@@ -94,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     width: 5,
                                   ),
                                   Text(
-                                    (categoryTime..shuffle()).first,
+                                    _timeListRandom[index],
                                     style: blackTextStyle,
                                   ),
                                   const SizedBox(
@@ -178,7 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       // By default, show a loading spinner.
                       return SizedBox(
                           width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height,
+                          height: MediaQuery.of(context).size.height - 220,
                           child:
                               const Center(child: CircularProgressIndicator()));
                     },
