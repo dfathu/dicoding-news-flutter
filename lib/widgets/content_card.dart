@@ -23,6 +23,7 @@ class _ContentCardState extends State<ContentCard> {
     super.initState();
     Future.delayed(Duration.zero, () async {
       _futurePosts = await Apiservice().getPostsById(widget.id);
+      print("debugPrint change");
       setState(() {});
     });
   }
